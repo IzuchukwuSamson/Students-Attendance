@@ -5,33 +5,25 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 const attendanceRouter = require('./routes/attendanceRoute')
+const studentsRouter = require('./routes/studentsRoute')
 
 const app = express()
 
+if(process.env.NODE_ENV === 'development') {
+    app.use(morgan('dev'))
+}
+
 app.use(express.json())
 app.use(bodyParser.json())
-app.use(morgan('dev'))
 app.use(cors())
 
-
-
-
-
-// app.get('/api/v1/attendance', getAllStudentsAttendance)
-// app.post('/api/v1/attendance', createStudentAttendance)
-
-// app.get('/api/v1/attendance/:id', getEachStudentAttendance)
-// app.patch('/api/v1/attendance/:id', updateStudentAttendance)
-// app.delete('/api/v1/attendance/:id', deleteStudentAttendance)
+app.use((req, res, next) => {
+    console.log('Hello from the middleware')
+    next()
+})
 
 app.use('/api/v1/attendance', attendanceRouter)
-
-// attendanceRouter.route('/').get(getAllStudentsAttendance).post(createStudentAttendance)
-// attendanceRouter.route('/:id').get(getEachStudentAttendance).patch(updateStudentAttendance).delete(deleteStudentAttendance)
+app.use('/api/v1/students', studentsRouter)
 
 
-
-const port = 8000
-app.listen(port, () => {
-    console.log(`App running on port ${port}`)
-})
+module.exports = app
