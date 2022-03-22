@@ -6,6 +6,7 @@ const morgan = require('morgan')
 
 const attendanceRouter = require('./routes/attendanceRoute')
 const studentsRouter = require('./routes/studentsRoute')
+const userRouter = require('./routes/userRoute')
 
 const app = express()
 
@@ -24,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use('/api/v1/attendance', attendanceRouter)
 app.use('/api/v1/students', studentsRouter)
+app.use('/api/v1/users', userRouter)
 
 
 module.exports = app
