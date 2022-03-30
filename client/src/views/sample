@@ -1,0 +1,25 @@
+<template>
+ <v-app>
+   <div>
+  <page-header></page-header>
+
+    <v-main>
+      <v-container>
+        <router-view/>
+      </v-container>
+    </v-main>
+    </div>
+  </v-app>
+  
+</template>
+
+<script>
+import PageHeader from '@/components/Header.vue'
+
+export default {
+  name: 'App',
+  components: {
+    PageHeader
+  }
+};
+</script>

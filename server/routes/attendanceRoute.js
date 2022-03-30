@@ -1,7 +1,6 @@
 const express = require('express')
 const attendanceContoller = require('./../controllers/attendanceController')
 
-
 const attendanceRouter = express.Router()
 
 attendanceRouter.route('/').get(attendanceContoller.getAllStudentsAttendance).post(attendanceContoller.createStudentAttendance)

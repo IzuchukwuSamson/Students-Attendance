@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 app.use((req, res, next) => {
-    console.log('Hello from the middleware')
+    // console.log(req.headers)
     next()
 })
 

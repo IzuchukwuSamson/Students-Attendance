@@ -18,7 +18,7 @@
             </v-btn>
             </router-link> -->
 
-            <v-btn text dark @click="navigateTo({name: 'register'})">Sign Up</v-btn>
+            
         </v-toolbar-items>
 
         <v-toolbar-items>
