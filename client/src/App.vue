@@ -10,7 +10,7 @@
           <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
 
-        <v-list-item-title>Lecturer</v-list-item-title>
+        <v-list-item-title>Admin</v-list-item-title>
 
         <v-btn
           icon
@@ -70,10 +70,10 @@
         items: [
           { title: 'Home', icon: 'mdi-home-city', action: () => {this.$router.push('/dashboard')} },
           { title: 'Students', icon: 'mdi-account' , action: () => {this.$router.push('/students')} },
+                    { title: 'View Students', icon: 'mdi-account', action: () => {this.$router.push('/view-students')} },
           { title: 'Take Attendance', icon: 'mdi-account-group-outline', action: () => {this.$router.push('/take-attendance')} },
-          // { title: 'View Students', icon: 'mdi-account', action: () => {this.$router.push('/view-students')} },
-          // { title: 'View Attendance', icon: 'mdi-account', action: () => {this.$router.push('/view-attendance')} },
-          // { title: 'Records', icon: 'mdi-account-group-outline', action: () => {this.$router.push('/records')} },
+          { title: 'View Attendance', icon: 'mdi-account', action: () => {this.$router.push('/view-attendance')} },
+          { title: 'Records', icon: 'mdi-account-group-outline', action: () => {this.$router.push('/records')} },
           { title: 'Download Record', icon: 'mdi-record', action: () => {this.$router.push('/download')} },
           { title: 'Logout', icon: 'mdi-logout', action: () => {this.$router.push('/')} },
         ],

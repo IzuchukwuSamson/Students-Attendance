@@ -1,4 +1,4 @@
-const fs = require('fs')
+// const fs = require('fs')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
@@ -23,9 +23,9 @@ app.use((req, res, next) => {
     next()
 })
 
-app.use('/api/v1/attendance', attendanceRouter)
-app.use('/api/v1/students', studentsRouter)
-app.use('/api/v1/users', userRouter)
+app.use('/attendance', attendanceRouter)
+app.use('/students', studentsRouter)
+app.use('/users', userRouter)
 
 
 module.exports = app

@@ -5,6 +5,15 @@
     sort-by="index"
     class="elevation-1"
   >
+
+  <div v-for="student in students"
+    :key="student.index"
+    {{student.id}}
+    {{student.name}}
+    {{student.dept}}
+    ></div>
+
+
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>Students</v-toolbar-title>
@@ -60,7 +69,7 @@
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
             <v-card-title class="text-h5"
-              >Are you sure you want to delete this item?</v-card-title
+              >Are you sure you want to delete this student?</v-card-title
             >
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -78,6 +87,7 @@
     </template>
     
     <template v-slot:item.actions="{ item }">
+      <v-icon small class="mr-2" @click="viewItem(item)">mdi-view </v-icon>
       <v-icon small class="mr-2" @click="editItem(item)"> mdi-pencil </v-icon>
       <v-icon small @click="deleteItem(item)"> mdi-delete </v-icon>
     </template>
@@ -90,6 +100,7 @@
 
 
 <script>
+import StudentService from '../services/StudentService'
   export default {
     data: () => ({
       dialog: false,
@@ -144,19 +155,18 @@
     methods: {
       initialize () {
         this.students = [
-          {
-            index: 1,
-            id: 20171031743,
-            name: 'Izuchukwu',
-            dept: 'ABE',
-          },
-          {
-            index: 2,
-            id: 20171031743,
-            name: 'Izuchukwu',
-            dept: 'ABE',
-          },
+          student.index,
+          student.id,
+          student.name,
+          student.dept
         ]
+      },
+
+      
+      viewItem (item) {
+        this.editedIndex = this.students.indexOf(item)
+        this.editedItem = Object.assign({}, item)
+        this.dialogDelete = true
       },
 
       editItem (item) {
@@ -201,5 +211,95 @@
         this.close()
       },
     },
+
+    async mounted () {
+        this.students = await StudentService.getAllStudents()
+    }
   }
 </script>
+
+<style scoped>
+*{
+    margin: 00px;
+    padding: 00px;
+    box-sizing: content-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6ebe0;
+    flex-direction: row;
+    flex-flow: wrap;
+
+}
+
+.font{
+    height: 375px;
+    width: 250px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.top{
+    height: 30%;
+    width: 100%;
+    background-color: #8338ec;
+    position: relative;
+    z-index: 5;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.bottom{
+    height: 70%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.top img{
+    height: 100px;
+    width: 100px;
+    background-color: #e6ebe0;
+    border-radius: 10px;
+    position: absolute;
+    top:60px;
+    left: 75px;
+}
+.bottom p{
+    position: relative;
+    top: 60px;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 20px;
+    text-emphasis: spacing;
+}
+.bottom .desi{
+    font-size:12px;
+    color: grey;
+    font-weight: normal;
+}
+.bottom .no{
+    font-size: 15px;
+    font-weight: normal;
+}
+.barcode img
+{
+    height: 65px;
+    width: 65px;
+    text-align: center;
+    margin: 5px;
+}
+.barcode{
+    text-align: center;
+    position: relative;
+    top: 70px;
+}
+</style>

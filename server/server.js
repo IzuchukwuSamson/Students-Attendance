@@ -12,7 +12,6 @@ mongoose.connect( db, {
 }).then(() => console.log('DB connection was successful'))
 
 
-
 console.log(app.get('env'))
 // console.log(process.env)
 
