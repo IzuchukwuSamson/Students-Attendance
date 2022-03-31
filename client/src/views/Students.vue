@@ -5,15 +5,6 @@
     sort-by="index"
     class="elevation-1"
   >
-
-  <div v-for="student in students"
-    :key="student.index"
-    {{student.id}}
-    {{student.name}}
-    {{student.dept}}
-    ></div>
-
-
     <template v-slot:top>
       <v-toolbar flat>
         <v-toolbar-title>Students</v-toolbar-title>
